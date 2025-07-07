@@ -1,0 +1,26 @@
+
+{
+  "info": {
+    "name": "API Test Collection",
+    "_postman_id": "12345678-1234-1234-1234-1234567890ab",
+    "description": "Simple API test collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
