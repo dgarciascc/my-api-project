@@ -19,6 +19,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      
+      - name: Levantar servidor Node.js en background
+        run: |
+          nohup npm start > server.log 2>&1 &
+          sleep 5  # Espera que el servidor levante
 
       - name: Install Newman
         run: |
@@ -28,3 +33,7 @@ jobs:
       - name: Run Postman Collection
         run: |
           newman run ./postman/my-collection.json  --environment ./postman/my-environment.json             --reporters cli,html             --reporter-html-export ./newman/report.html
+      
+      - name: Ver logs del servidor si falla
+        if: failure()
+        run: cat server.log
