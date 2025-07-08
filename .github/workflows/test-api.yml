@@ -19,7 +19,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+          
+      - name: Instalar dependencias del proyecto
+        run: npm install
+
       - name: Levantar servidor Node.js en background
         run: |
           nohup npm start > server.log 2>&1 &
