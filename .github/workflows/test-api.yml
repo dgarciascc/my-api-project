@@ -28,12 +28,12 @@ jobs:
       - name: Install Newman
         run: |
           npm install -g newman
-          npm install newman-reporter-html
+          npm install -g newman-reporter-htmlextra
 
       - name: Run Postman Collection
         run: |
-          newman run ./postman/my-collection.json  --environment ./postman/my-environment.json             --reporters cli,html             --reporter-html-export ./newman/report.html
-      
+          newman run ./postman/my-collection.json  --environment ./postman/my-environment.json  --reporters cli,htmlextra  --reporter-htmlextra-export report.html   
+
       - name: Ver logs del servidor si falla
         if: failure()
         run: cat server.log
