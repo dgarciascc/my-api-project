@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Instalar dependencias del proyecto
         run: npm install
 
@@ -36,6 +36,12 @@ jobs:
       - name: Run Postman Collection
         run: |
           newman run ./postman/my-collection.json  --environment ./postman/my-environment.json  --reporters cli,htmlextra  --reporter-htmlextra-export report.html   
+
+      - name: Subir HTML como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-html-report
+          path: newman-report.html
 
       - name: Ver logs del servidor si falla
         if: failure()
